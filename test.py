@@ -20,6 +20,7 @@ def get_model_prediction(data, sample_k, model):
     sample_motion_3D = sample_motion_3D.transpose(0, 1).contiguous()
     return recon_motion_3D, sample_motion_3D
 
+
 def save_prediction(pred, data, suffix, save_dir, cfg):
     pred_num = 0
     pred_arr = []
@@ -136,7 +137,7 @@ if __name__ == '__main__':
             save_dir = f'{cfg.result_dir}/epoch_{epoch:04d}/{split}'; mkdir_if_missing(save_dir)
             eval_dir = f'{save_dir}/samples'
             if not args.cached:
-                test_model(generator, save_dir, cfg)
+                test_model(generator, save_dir, cfg, model, device, log)
 
             log_file = os.path.join(cfg.log_dir, 'log_eval.txt')
             cmd = f"python eval.py --dataset {cfg.dataset} --results_dir {eval_dir} --data {split} --log {log_file}"
