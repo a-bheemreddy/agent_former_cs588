@@ -13,14 +13,14 @@ from model.model_lib import model_dict
 from utils.utils import prepare_seed, print_log, mkdir_if_missing
 
 
-def get_model_prediction(data, sample_k):
+def get_model_prediction(data, sample_k, model):
     model.set_data(data)
     recon_motion_3D, _ = model.inference(mode='recon', sample_num=sample_k)
     sample_motion_3D, data = model.inference(mode='infer', sample_num=sample_k, need_weights=False)
     sample_motion_3D = sample_motion_3D.transpose(0, 1).contiguous()
     return recon_motion_3D, sample_motion_3D
 
-def save_prediction(pred, data, suffix, save_dir):
+def save_prediction(pred, data, suffix, save_dir, cfg):
     pred_num = 0
     pred_arr = []
     fut_data, seq_name, frame, valid_id, pred_mask = data['fut_data'], data['seq'], data['frame'], data['valid_id'], data['pred_mask']
@@ -53,7 +53,7 @@ def save_prediction(pred, data, suffix, save_dir):
         np.savetxt(fname, pred_arr, fmt="%.3f")
     return pred_num
 
-def test_model(generator, save_dir, cfg):
+def test_model(generator, save_dir, cfg, model, device, log):
     total_num_pred = 0
     while not generator.is_epoch_end():
         data = generator()
@@ -67,7 +67,7 @@ def test_model(generator, save_dir, cfg):
         
         gt_motion_3D = torch.stack(data['fut_motion_3D'], dim=0).to(device) * cfg.traj_scale
         with torch.no_grad():
-            recon_motion_3D, sample_motion_3D = get_model_prediction(data, cfg.sample_k)
+            recon_motion_3D, sample_motion_3D = get_model_prediction(data, cfg.sample_k, model)
         recon_motion_3D, sample_motion_3D = recon_motion_3D * cfg.traj_scale, sample_motion_3D * cfg.traj_scale
 
         """save samples"""
@@ -75,9 +75,9 @@ def test_model(generator, save_dir, cfg):
         sample_dir = os.path.join(save_dir, 'samples'); mkdir_if_missing(sample_dir)
         gt_dir = os.path.join(save_dir, 'gt'); mkdir_if_missing(gt_dir)
         for i in range(sample_motion_3D.shape[0]):
-            save_prediction(sample_motion_3D[i], data, f'/sample_{i:03d}', sample_dir)
-        save_prediction(recon_motion_3D, data, '', recon_dir)        # save recon
-        num_pred = save_prediction(gt_motion_3D, data, '', gt_dir)              # save gt
+            save_prediction(sample_motion_3D[i], data, f'/sample_{i:03d}', sample_dir, cfg)
+        save_prediction(recon_motion_3D, data, '', recon_dir, cfg)        # save recon
+        num_pred = save_prediction(gt_motion_3D, data, '', gt_dir, cfg)              # save gt
         total_num_pred += num_pred
 
     print_log(f'\n\n total_num_pred: {total_num_pred}', log)
