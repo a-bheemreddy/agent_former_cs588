@@ -7,3 +7,30 @@ total num samples: 2
 
 
  total_num_pred: 2
+
+-------------------------- loading test data --------------------------
+loading sequence inference_data ...
+total num samples: 2
+------------------------------ done --------------------------------
+
+
+-------------------------- loading test data --------------------------
+loading sequence inference_data ...
+total num samples: 2
+------------------------------ done --------------------------------
+
+
+-------------------------- loading test data --------------------------
+loading sequence inference_data ...
+total num samples: 2
+------------------------------ done --------------------------------
+
+
+-------------------------- loading test data --------------------------
+loading sequence inference_data ...
+total num samples: 2
+------------------------------ done --------------------------------
+
+
+
+ total_num_pred: 2
