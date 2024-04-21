@@ -7,6 +7,9 @@ from utils.utils import print_log, AverageMeter, isfile, print_log, AverageMeter
 
 
 """ Metrics """
+ades_per_sample = np.zeros(0)
+traj_counts = 0
+fdes_per_sample = np.zeros(0)
 
 def compute_ADE(pred_arr, gt_arr):
     ade = 0.0
@@ -14,6 +17,8 @@ def compute_ADE(pred_arr, gt_arr):
         diff = pred - np.expand_dims(gt, axis=0)        # samples x frames x 2
         dist = np.linalg.norm(diff, axis=-1)            # samples x frames
         dist = dist.mean(axis=-1)                       # samples
+        ades_per_sample += dist
+        traj_counts += 1
         ade += dist.min(axis=0)                         # (1, )
     ade /= len(pred_arr)
     return ade
@@ -26,6 +31,7 @@ def compute_FDE(pred_arr, gt_arr):
         dist = np.linalg.norm(diff, axis=-1)            # samples x frames
         dist = dist[..., -1]                            # samples 
         fde += dist.min(axis=0)                         # (1, )
+    fdes_per_sample += dist
     fde /= len(pred_arr)
     return fde
 
