@@ -4,9 +4,11 @@ import argparse
 from data.nuscenes_pred_split import get_nuscenes_pred_split
 from data.ethucy_split import get_ethucy_split
 from utils.utils import print_log, AverageMeter, isfile, print_log, AverageMeter, isfile, isfolder, find_unique_common_from_lists, load_list_from_folder, load_txt_file
-
+from collections import defaultdict
 
 """ Metrics """
+best_fde_dict = defaultdict(int)
+best_ade_dict = defaultdict(int)
 ades_per_sample = np.zeros(0)
 traj_counts = 0
 fdes_per_sample = np.zeros(0)
@@ -19,6 +21,7 @@ def compute_ADE(pred_arr, gt_arr):
         dist = dist.mean(axis=-1)                       # samples
         ades_per_sample += dist
         traj_counts += 1
+        best_ade_dict[dist.argmin(axis=0)] += 1
         ade += dist.min(axis=0)                         # (1, )
     ade /= len(pred_arr)
     return ade
@@ -30,6 +33,7 @@ def compute_FDE(pred_arr, gt_arr):
         diff = pred - np.expand_dims(gt, axis=0)        # samples x frames x 2
         dist = np.linalg.norm(diff, axis=-1)            # samples x frames
         dist = dist[..., -1]                            # samples 
+        best_fde_dict[dist.argmin(axis=0)] += 1
         fde += dist.min(axis=0)                         # (1, )
     fdes_per_sample += dist
     fde /= len(pred_arr)
