@@ -16,6 +16,23 @@
                 "0"
             ],
             "console": "integratedTerminal"
+        },
+        {
+            "name": "Python: eval.py",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "${workspaceFolder}/eval.py",
+            "args": [
+                "--dataset",
+                "inference_data",
+                "--results_dir",
+                "results/inference/results/epoch_0005/test/samples",
+                "--data",
+                "test",
+                "--log",
+                "results/inference/log/log_eval.txt",
+            ],
+            "console": "integratedTerminal"
         }
     ]
 }
