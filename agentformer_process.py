@@ -20,7 +20,7 @@ import numpy as np
 from test import test_model
 
 # How many of the top trajectories that we want to keep
-NUM_TOP_TRAJECTORIES = 3
+NUM_TOP_TRAJECTORIES = 5
 # 8 frames used to base future trajectories off of (current frame plus previous 7)
 NUM_PREV_FRAMES = 7
 NUM_FUTURE_FRAMES = 12

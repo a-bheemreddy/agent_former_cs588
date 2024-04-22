@@ -14,11 +14,11 @@ from model.model_lib import model_dict
 from utils.utils import prepare_seed, print_log, mkdir_if_missing
 
 # How many of the top trajectories that we want to keep
-NUM_TOP_TRAJECTORIES = 3
+NUM_TOP_TRAJECTORIES = 5
 # 8 frames used to base future trajectories off of (current frame plus previous 7)
 NUM_PREV_FRAMES = 7
 NUM_FUTURE_FRAMES = 12
-TOP_PERFORMING_INDICES = [0, 18, 19]
+TOP_PERFORMING_INDICES = [0, 1, 17, 18, 19]
 
 def get_model_prediction(data, sample_k, model):
     model.set_data(data)
