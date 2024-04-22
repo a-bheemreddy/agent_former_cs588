@@ -6,7 +6,7 @@ def start_model_process(model_path, env_path):
     # python_path = '/root/anaconda3/envs/AgentFormer/bin/python'
     python_path = '/home/tyler/anaconda3/envs/AgentFormer/bin/python'
     return subprocess.Popen(
-        [python_path, model_path], # ["conda", "run", "-n", env_path, "python", model_path],
+        [python_path, model_path], #["conda", "run", "-n", env_path, "python", model_path],
         stdin=subprocess.PIPE,
         stdout=subprocess.PIPE,
         encoding="utf-8",

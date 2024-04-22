@@ -62,7 +62,8 @@ def run_model(model, cfg):
 
 if __name__ == "__main__":
     cfg = Config('inference')
-    device = 'cuda'
+    # device = 'cuda'
+    device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
 
     model = model_dict['dlow'](cfg)
     model.set_device(device)
