@@ -106,7 +106,6 @@ def test_model(generator, save_dir, cfg, model, device, log):
 def save_best_trajectories(sample_motions, cfg, trajs_to_save=NUM_TOP_TRAJECTORIES):
     # sample motions: num_frames_recorded x NUM_TOP_TRAJECTORIES x num_pedestrians x 12 x 2
     # (first two layers of sample_motions are lists)
-    print(len(sample_motions), len(sample_motions[0]))
     top_results_dir = os.path.join(cfg.result_dir, 'top_paths'); mkdir_if_missing(top_results_dir)
     for frame in range(len(sample_motions)):
         current_frame = frame + NUM_PREV_FRAMES

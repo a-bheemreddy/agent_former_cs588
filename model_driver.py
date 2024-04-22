@@ -3,9 +3,10 @@ import sys
 import time
 
 def start_model_process(model_path, env_path):
-    python_path = '/root/miniconda3/envs/AgentFormer/bin/python'
+    # python_path = '/root/anaconda3/envs/AgentFormer/bin/python'
+    python_path = '/home/tyler/anaconda3/envs/AgentFormer/bin/python'
     return subprocess.Popen(
-        [python_path, model_path],# ["conda", "run", "-n", env_path, "python", model_path],
+        [python_path, model_path], # ["conda", "run", "-n", env_path, "python", model_path],
         stdin=subprocess.PIPE,
         stdout=subprocess.PIPE,
         encoding="utf-8",
@@ -28,6 +29,7 @@ if __name__ == "__main__":
     model1_env = 'AgentFormer'
     # Start model1 process
     model1_process = start_model_process(model1_path, model1_env)
+    print("Model 1 process: ", model1_process)
     while(True):
         input(f"new data is ready")
         # Communicate with model1
