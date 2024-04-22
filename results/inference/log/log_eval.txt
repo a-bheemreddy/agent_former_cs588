@@ -3,108 +3,127 @@ loading GT from datasets/eth_ucy/inference_data
 
 
 number of sequences to evaluate is 1
-evaluating seq inference_data, forecasting frame 000008 to 000019 ADE: 1.1819 (1.1819) FDE: 0.7891 (0.7891)
-evaluating seq inference_data, forecasting frame 000009 to 000020 ADE: 1.7080 (1.4450) FDE: 1.7644 (1.2767)
+loading results from results/inference/results/epoch_0005/test/samples
+loading GT from datasets/eth_ucy/inference_data
+
+
+number of sequences to evaluate is 1
+evaluating seq inference_data, forecasting frame 000008 to 000019 ADE: 0.8399 (0.8399) FDE: 1.1235 (1.1235)
+evaluating seq inference_data, forecasting frame 000009 to 000020 ADE: 0.5630 (0.7014) FDE: 1.0052 (1.0643)
+evaluating seq inference_data, forecasting frame 000010 to 000021 ADE: 0.9104 (0.7711) FDE: 1.1448 (1.0911)
+evaluating seq inference_data, forecasting frame 000011 to 000022 ADE: 0.6758 (0.7473) FDE: 1.5513 (1.2062)
+evaluating seq inference_data, forecasting frame 000012 to 000023 ADE: 0.6714 (0.7321) FDE: 1.2018 (1.2053)
+evaluating seq inference_data, forecasting frame 000013 to 000024 ADE: 0.7616 (0.7370) FDE: 1.4972 (1.2540)
+evaluating seq inference_data, forecasting frame 000014 to 000025 ADE: 0.9169 (0.7627) FDE: 1.6561 (1.3114)
+evaluating seq inference_data, forecasting frame 000015 to 000026 ADE: 0.6396 (0.7473) FDE: 1.1494 (1.2912)
+evaluating seq inference_data, forecasting frame 000016 to 000027 ADE: 0.7982 (0.7530) FDE: 1.3075 (1.2930)
+evaluating seq inference_data, forecasting frame 000017 to 000028 ADE: 0.5828 (0.7360) FDE: 0.9391 (1.2576)
+evaluating seq inference_data, forecasting frame 000018 to 000029 ADE: 0.7384 (0.7362) FDE: 1.0797 (1.2414)
+evaluating seq inference_data, forecasting frame 000019 to 000030 ADE: 0.5283 (0.7189) FDE: 0.5666 (1.1852)
+evaluating seq inference_data, forecasting frame 000020 to 000031 ADE: 0.2836 (0.6854) FDE: 0.2128 (1.1104)
+evaluating seq inference_data, forecasting frame 000021 to 000032 ADE: 0.1726 (0.6488) FDE: 0.2205 (1.0468)
+evaluating seq inference_data, forecasting frame 000022 to 000033 ADE: 0.2604 (0.6229) FDE: 0.3577 (1.0009)
+evaluating seq inference_data, forecasting frame 000023 to 000034 ADE: 0.3786 (0.6076) FDE: 0.5125 (0.9703)
+evaluating seq inference_data, forecasting frame 000024 to 000035 ADE: 0.3694 (0.5936) FDE: 0.4344 (0.9388)
+evaluating seq inference_data, forecasting frame 000025 to 000036 ADE: 0.2107 (0.5723) FDE: 0.2219 (0.8990)
+evaluating seq inference_data, forecasting frame 000026 to 000037 ADE: 0.2277 (0.5542) FDE: 0.4223 (0.8739)
+evaluating seq inference_data, forecasting frame 000027 to 000038 ADE: 0.2335 (0.5381) FDE: 0.3924 (0.8498)
+evaluating seq inference_data, forecasting frame 000028 to 000039 ADE: 0.2228 (0.5231) FDE: 0.3623 (0.8266)
+evaluating seq inference_data, forecasting frame 000029 to 000040 ADE: 0.2586 (0.5111) FDE: 0.7117 (0.8214)
 ------------------------------ STATS ------------------------------
-6 ADE: 1.4450
-6 FDE: 1.2767
+44 ADE: 0.5111
+44 FDE: 0.8214
 -------------------------------------------------------------------
 loading results from results/inference/results/epoch_0005/test/samples
 loading GT from datasets/eth_ucy/inference_data
 
 
 number of sequences to evaluate is 1
-evaluating seq inference_data, forecasting frame 000008 to 000019 ADE: 1.1819 (1.1819) FDE: 0.7891 (0.7891)
-evaluating seq inference_data, forecasting frame 000009 to 000020 ADE: 1.7080 (1.4450) FDE: 1.7644 (1.2767)
+evaluating seq inference_data, forecasting frame 000008 to 000019 ADE: 0.8399 (0.8399) FDE: 1.1235 (1.1235)
+evaluating seq inference_data, forecasting frame 000009 to 000020 ADE: 0.5630 (0.7014) FDE: 1.0052 (1.0643)
+evaluating seq inference_data, forecasting frame 000010 to 000021 ADE: 0.9104 (0.7711) FDE: 1.1448 (1.0911)
+evaluating seq inference_data, forecasting frame 000011 to 000022 ADE: 0.6758 (0.7473) FDE: 1.5513 (1.2062)
+evaluating seq inference_data, forecasting frame 000012 to 000023 ADE: 0.6714 (0.7321) FDE: 1.2018 (1.2053)
+evaluating seq inference_data, forecasting frame 000013 to 000024 ADE: 0.7616 (0.7370) FDE: 1.4972 (1.2540)
+evaluating seq inference_data, forecasting frame 000014 to 000025 ADE: 0.9169 (0.7627) FDE: 1.6561 (1.3114)
+evaluating seq inference_data, forecasting frame 000015 to 000026 ADE: 0.6396 (0.7473) FDE: 1.1494 (1.2912)
+evaluating seq inference_data, forecasting frame 000016 to 000027 ADE: 0.7982 (0.7530) FDE: 1.3075 (1.2930)
+evaluating seq inference_data, forecasting frame 000017 to 000028 ADE: 0.5828 (0.7360) FDE: 0.9391 (1.2576)
+evaluating seq inference_data, forecasting frame 000018 to 000029 ADE: 0.7384 (0.7362) FDE: 1.0797 (1.2414)
+evaluating seq inference_data, forecasting frame 000019 to 000030 ADE: 0.5283 (0.7189) FDE: 0.5666 (1.1852)
+evaluating seq inference_data, forecasting frame 000020 to 000031 ADE: 0.2836 (0.6854) FDE: 0.2128 (1.1104)
+evaluating seq inference_data, forecasting frame 000021 to 000032 ADE: 0.1726 (0.6488) FDE: 0.2205 (1.0468)
+evaluating seq inference_data, forecasting frame 000022 to 000033 ADE: 0.2604 (0.6229) FDE: 0.3577 (1.0009)
+evaluating seq inference_data, forecasting frame 000023 to 000034 ADE: 0.3786 (0.6076) FDE: 0.5125 (0.9703)
+evaluating seq inference_data, forecasting frame 000024 to 000035 ADE: 0.3694 (0.5936) FDE: 0.4344 (0.9388)
+evaluating seq inference_data, forecasting frame 000025 to 000036 ADE: 0.2107 (0.5723) FDE: 0.2219 (0.8990)
+evaluating seq inference_data, forecasting frame 000026 to 000037 ADE: 0.2277 (0.5542) FDE: 0.4223 (0.8739)
+evaluating seq inference_data, forecasting frame 000027 to 000038 ADE: 0.2335 (0.5381) FDE: 0.3924 (0.8498)
+evaluating seq inference_data, forecasting frame 000028 to 000039 ADE: 0.2228 (0.5231) FDE: 0.3623 (0.8266)
+evaluating seq inference_data, forecasting frame 000029 to 000040 ADE: 0.2586 (0.5111) FDE: 0.7117 (0.8214)
 ------------------------------ STATS ------------------------------
-6 ADE: 1.4450
-6 FDE: 1.2767
+44 ADE: 0.5111
+44 FDE: 0.8214
 -------------------------------------------------------------------
 loading results from results/inference/results/epoch_0005/test/samples
 loading GT from datasets/eth_ucy/inference_data
 
 
 number of sequences to evaluate is 1
-evaluating seq inference_data, forecasting frame 000008 to 000019 ADE: 1.1819 (1.1819) FDE: 0.7891 (0.7891)
-evaluating seq inference_data, forecasting frame 000009 to 000020 ADE: 1.7080 (1.4450) FDE: 1.7644 (1.2767)
+evaluating seq inference_data, forecasting frame 000008 to 000019 ADE: 0.8399 (0.8399) FDE: 1.1235 (1.1235)
+evaluating seq inference_data, forecasting frame 000009 to 000020 ADE: 0.5630 (0.7014) FDE: 1.0052 (1.0643)
+evaluating seq inference_data, forecasting frame 000010 to 000021 ADE: 0.9104 (0.7711) FDE: 1.1448 (1.0911)
+evaluating seq inference_data, forecasting frame 000011 to 000022 ADE: 0.6758 (0.7473) FDE: 1.5513 (1.2062)
+evaluating seq inference_data, forecasting frame 000012 to 000023 ADE: 0.6714 (0.7321) FDE: 1.2018 (1.2053)
+evaluating seq inference_data, forecasting frame 000013 to 000024 ADE: 0.7616 (0.7370) FDE: 1.4972 (1.2540)
+evaluating seq inference_data, forecasting frame 000014 to 000025 ADE: 0.9169 (0.7627) FDE: 1.6561 (1.3114)
+evaluating seq inference_data, forecasting frame 000015 to 000026 ADE: 0.6396 (0.7473) FDE: 1.1494 (1.2912)
+evaluating seq inference_data, forecasting frame 000016 to 000027 ADE: 0.7982 (0.7530) FDE: 1.3075 (1.2930)
+evaluating seq inference_data, forecasting frame 000017 to 000028 ADE: 0.5828 (0.7360) FDE: 0.9391 (1.2576)
+evaluating seq inference_data, forecasting frame 000018 to 000029 ADE: 0.7384 (0.7362) FDE: 1.0797 (1.2414)
+evaluating seq inference_data, forecasting frame 000019 to 000030 ADE: 0.5283 (0.7189) FDE: 0.5666 (1.1852)
+evaluating seq inference_data, forecasting frame 000020 to 000031 ADE: 0.2836 (0.6854) FDE: 0.2128 (1.1104)
+evaluating seq inference_data, forecasting frame 000021 to 000032 ADE: 0.1726 (0.6488) FDE: 0.2205 (1.0468)
+evaluating seq inference_data, forecasting frame 000022 to 000033 ADE: 0.2604 (0.6229) FDE: 0.3577 (1.0009)
+evaluating seq inference_data, forecasting frame 000023 to 000034 ADE: 0.3786 (0.6076) FDE: 0.5125 (0.9703)
+evaluating seq inference_data, forecasting frame 000024 to 000035 ADE: 0.3694 (0.5936) FDE: 0.4344 (0.9388)
+evaluating seq inference_data, forecasting frame 000025 to 000036 ADE: 0.2107 (0.5723) FDE: 0.2219 (0.8990)
+evaluating seq inference_data, forecasting frame 000026 to 000037 ADE: 0.2277 (0.5542) FDE: 0.4223 (0.8739)
+evaluating seq inference_data, forecasting frame 000027 to 000038 ADE: 0.2335 (0.5381) FDE: 0.3924 (0.8498)
+evaluating seq inference_data, forecasting frame 000028 to 000039 ADE: 0.2228 (0.5231) FDE: 0.3623 (0.8266)
+evaluating seq inference_data, forecasting frame 000029 to 000040 ADE: 0.2586 (0.5111) FDE: 0.7117 (0.8214)
 ------------------------------ STATS ------------------------------
-6 ADE: 1.4450
-6 FDE: 1.2767
+44 ADE: 0.5111
+44 FDE: 0.8214
 -------------------------------------------------------------------
 loading results from results/inference/results/epoch_0005/test/samples
 loading GT from datasets/eth_ucy/inference_data
 
 
 number of sequences to evaluate is 1
-evaluating seq inference_data, forecasting frame 000008 to 000019 ADE: 0.0128 (0.0128) FDE: 0.0187 (0.0187)
-evaluating seq inference_data, forecasting frame 000009 to 000020 ADE: 0.0133 (0.0130) FDE: 0.0138 (0.0163)
+evaluating seq inference_data, forecasting frame 000008 to 000019 ADE: 0.8399 (0.8399) FDE: 1.1235 (1.1235)
+evaluating seq inference_data, forecasting frame 000009 to 000020 ADE: 0.5630 (0.7014) FDE: 1.0052 (1.0643)
+evaluating seq inference_data, forecasting frame 000010 to 000021 ADE: 0.9104 (0.7711) FDE: 1.1448 (1.0911)
+evaluating seq inference_data, forecasting frame 000011 to 000022 ADE: 0.6758 (0.7473) FDE: 1.5513 (1.2062)
+evaluating seq inference_data, forecasting frame 000012 to 000023 ADE: 0.6714 (0.7321) FDE: 1.2018 (1.2053)
+evaluating seq inference_data, forecasting frame 000013 to 000024 ADE: 0.7616 (0.7370) FDE: 1.4972 (1.2540)
+evaluating seq inference_data, forecasting frame 000014 to 000025 ADE: 0.9169 (0.7627) FDE: 1.6561 (1.3114)
+evaluating seq inference_data, forecasting frame 000015 to 000026 ADE: 0.6396 (0.7473) FDE: 1.1494 (1.2912)
+evaluating seq inference_data, forecasting frame 000016 to 000027 ADE: 0.7982 (0.7530) FDE: 1.3075 (1.2930)
+evaluating seq inference_data, forecasting frame 000017 to 000028 ADE: 0.5828 (0.7360) FDE: 0.9391 (1.2576)
+evaluating seq inference_data, forecasting frame 000018 to 000029 ADE: 0.7384 (0.7362) FDE: 1.0797 (1.2414)
+evaluating seq inference_data, forecasting frame 000019 to 000030 ADE: 0.5283 (0.7189) FDE: 0.5666 (1.1852)
+evaluating seq inference_data, forecasting frame 000020 to 000031 ADE: 0.2836 (0.6854) FDE: 0.2128 (1.1104)
+evaluating seq inference_data, forecasting frame 000021 to 000032 ADE: 0.1726 (0.6488) FDE: 0.2205 (1.0468)
+evaluating seq inference_data, forecasting frame 000022 to 000033 ADE: 0.2604 (0.6229) FDE: 0.3577 (1.0009)
+evaluating seq inference_data, forecasting frame 000023 to 000034 ADE: 0.3786 (0.6076) FDE: 0.5125 (0.9703)
+evaluating seq inference_data, forecasting frame 000024 to 000035 ADE: 0.3694 (0.5936) FDE: 0.4344 (0.9388)
+evaluating seq inference_data, forecasting frame 000025 to 000036 ADE: 0.2107 (0.5723) FDE: 0.2219 (0.8990)
+evaluating seq inference_data, forecasting frame 000026 to 000037 ADE: 0.2277 (0.5542) FDE: 0.4223 (0.8739)
+evaluating seq inference_data, forecasting frame 000027 to 000038 ADE: 0.2335 (0.5381) FDE: 0.3924 (0.8498)
+evaluating seq inference_data, forecasting frame 000028 to 000039 ADE: 0.2228 (0.5231) FDE: 0.3623 (0.8266)
+evaluating seq inference_data, forecasting frame 000029 to 000040 ADE: 0.2586 (0.5111) FDE: 0.7117 (0.8214)
 ------------------------------ STATS ------------------------------
-6 ADE: 0.0130
-6 FDE: 0.0163
--------------------------------------------------------------------
-loading results from results/inference/results/epoch_0005/test/samples
-loading GT from datasets/eth_ucy/inference_data
-
-
-number of sequences to evaluate is 1
-evaluating seq inference_data, forecasting frame 000008 to 000019 ADE: 0.2143 (0.2143) FDE: 0.5481 (0.5481)
-evaluating seq inference_data, forecasting frame 000009 to 000020 ADE: 0.3551 (0.2847) FDE: 0.3029 (0.4255)
------------------------------- STATS ------------------------------
-2 ADE: 0.2847
-2 FDE: 0.4255
--------------------------------------------------------------------
-loading results from results/inference/results/epoch_0005/test/samples
-loading GT from datasets/eth_ucy/inference_data
-
-
-number of sequences to evaluate is 1
-evaluating seq inference_data, forecasting frame 000008 to 000019 ADE: 0.2143 (0.2143) FDE: 0.5481 (0.5481)
-evaluating seq inference_data, forecasting frame 000009 to 000020 ADE: 0.3551 (0.2847) FDE: 0.3029 (0.4255)
------------------------------- STATS ------------------------------
-2 ADE: 0.2847
-2 FDE: 0.4255
--------------------------------------------------------------------
-loading results from results/inference/results/epoch_0005/test/samples
-loading GT from datasets/eth_ucy/inference_data
-
-
-number of sequences to evaluate is 1
-evaluating seq inference_data, forecasting frame 000008 to 000019 ADE: 0.2143 (0.2143) FDE: 0.5481 (0.5481)
-evaluating seq inference_data, forecasting frame 000009 to 000020 ADE: 0.3551 (0.2847) FDE: 0.3029 (0.4255)
------------------------------- STATS ------------------------------
-2 ADE: 0.2847
-2 FDE: 0.4255
--------------------------------------------------------------------
-loading results from results/inference/results/epoch_0005/test/samples
-loading GT from datasets/eth_ucy/inference_data
-
-
-number of sequences to evaluate is 1
-evaluating seq inference_data, forecasting frame 000008 to 000019 ADE: 0.2143 (0.2143) FDE: 0.5481 (0.5481)
-evaluating seq inference_data, forecasting frame 000009 to 000020 ADE: 0.3551 (0.2847) FDE: 0.3029 (0.4255)
------------------------------- STATS ------------------------------
-2 ADE: 0.2847
-2 FDE: 0.4255
--------------------------------------------------------------------
-loading results from results/inference/results/epoch_0005/test/samples
-loading GT from datasets/eth_ucy/inference_data
-
-
-number of sequences to evaluate is 1
-evaluating seq inference_data, forecasting frame 000008 to 000019 ADE: 1.9051 (1.9051) FDE: 4.6793 (4.6793)
-evaluating seq inference_data, forecasting frame 000009 to 000020 ADE: 2.1487 (2.0269) FDE: 5.0786 (4.8790)
------------------------------- STATS ------------------------------
-2 ADE: 2.0269
-2 FDE: 4.8790
--------------------------------------------------------------------
-loading results from results/inference/results/epoch_0005/test/samples
-loading GT from datasets/eth_ucy/inference_data
-
-
-number of sequences to evaluate is 1
-evaluating seq inference_data, forecasting frame 000008 to 000019 ADE: 0.2143 (0.2143) FDE: 0.5481 (0.5481)
-evaluating seq inference_data, forecasting frame 000009 to 000020 ADE: 0.3551 (0.2847) FDE: 0.3029 (0.4255)
------------------------------- STATS ------------------------------
-2 ADE: 0.2847
-2 FDE: 0.4255
+44 ADE: 0.5111
+44 FDE: 0.8214
 -------------------------------------------------------------------
