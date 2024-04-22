@@ -7,13 +7,16 @@ from utils.utils import print_log, AverageMeter, isfile, print_log, AverageMeter
 from collections import defaultdict
 
 """ Metrics """
+
 best_fde_dict = defaultdict(int)
 best_ade_dict = defaultdict(int)
-# ades_per_sample = np.zeros(0)
-# traj_counts = 0
-# fdes_per_sample = np.zeros(0)
+ades_per_sample = np.zeros((20,))
+traj_counts = 0
+fdes_per_sample = np.zeros((20,))
 
 def compute_ADE(pred_arr, gt_arr):
+    global best_fde_dict, best_ade_dict, ades_per_sample, traj_counts, fdes_per_sample
+    
     ade = 0.0
     for pred, gt in zip(pred_arr, gt_arr):
         diff = pred - np.expand_dims(gt, axis=0)        # samples x frames x 2
@@ -28,6 +31,7 @@ def compute_ADE(pred_arr, gt_arr):
 
 
 def compute_FDE(pred_arr, gt_arr):
+    global best_fde_dict, best_ade_dict, ades_per_sample, traj_counts, fdes_per_sample
     fde = 0.0
     for pred, gt in zip(pred_arr, gt_arr):
         diff = pred - np.expand_dims(gt, axis=0)        # samples x frames x 2
@@ -147,4 +151,8 @@ if __name__ == '__main__':
     for name, meter in stats_meter.items():
         print_log(f'{meter.count} {name}: {meter.avg:.4f}', log_file)
     print_log('-' * 67, log_file)
+    print_log(best_ade_dict, log_file)
+    print_log(best_fde_dict, log_file)
+    print_log(ades_per_sample, log_file)
+    print_log(fdes_per_sample, log_file)
     log_file.close()
