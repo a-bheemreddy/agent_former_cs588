@@ -4,6 +4,7 @@ import os
 import sys
 import subprocess
 import shutil
+import json
 
 sys.path.append(os.getcwd())
 from data.dataloader import data_generator
@@ -12,6 +13,12 @@ from utils.config import Config
 from model.model_lib import model_dict
 from utils.utils import prepare_seed, print_log, mkdir_if_missing
 
+# How many of the top trajectories that we want to keep
+NUM_TOP_TRAJECTORIES = 5
+# 8 frames used to base future trajectories off of (current frame plus previous 7)
+NUM_PREV_FRAMES = 7
+NUM_FUTURE_FRAMES = 12
+TOP_PERFORMING_INDICES = [0, 1, 17, 18, 19]
 
 def get_model_prediction(data, sample_k, model):
     model.set_data(data)
@@ -56,7 +63,9 @@ def save_prediction(pred, data, suffix, save_dir, cfg):
 
 def test_model(generator, save_dir, cfg, model, device, log):
     total_num_pred = 0
+    sample_motions = []
     while not generator.is_epoch_end():
+        current_sample_motion = []
         data = generator()
         if data is None:
             continue
@@ -75,11 +84,14 @@ def test_model(generator, save_dir, cfg, model, device, log):
         recon_dir = os.path.join(save_dir, 'recon'); mkdir_if_missing(recon_dir)
         sample_dir = os.path.join(save_dir, 'samples'); mkdir_if_missing(sample_dir)
         gt_dir = os.path.join(save_dir, 'gt'); mkdir_if_missing(gt_dir)
-        for i in range(sample_motion_3D.shape[0]):
+        for i in range(sample_motion_3D.shape[0]): # 20 x num_peds x 12 x 2
             save_prediction(sample_motion_3D[i], data, f'/sample_{i:03d}', sample_dir, cfg)
+            if i in TOP_PERFORMING_INDICES:
+                current_sample_motion.append(sample_motion_3D[i])
         save_prediction(recon_motion_3D, data, '', recon_dir, cfg)        # save recon
         num_pred = save_prediction(gt_motion_3D, data, '', gt_dir, cfg)              # save gt
         total_num_pred += num_pred
+        sample_motions.append(current_sample_motion)
 
     print_log(f'\n\n total_num_pred: {total_num_pred}', log)
     if cfg.dataset == 'nuscenes_pred':
@@ -88,8 +100,28 @@ def test_model(generator, save_dir, cfg, model, device, log):
             'val': 8560,
             'test': 9041
         }
-        print(total_num_pred)
         #assert total_num_pred == scene_num[generator.split]
+    return sample_motions
+
+def save_best_trajectories(sample_motions, cfg, trajs_to_save=NUM_TOP_TRAJECTORIES):
+    # sample motions: num_frames_recorded x NUM_TOP_TRAJECTORIES x num_pedestrians x 12 x 2
+    # (first two layers of sample_motions are lists)
+    top_results_dir = os.path.join(cfg.result_dir, 'top_paths'); mkdir_if_missing(top_results_dir)
+    for frame in range(len(sample_motions)):
+        current_frame = frame + NUM_PREV_FRAMES
+        for traj in range(NUM_TOP_TRAJECTORIES):
+            current_file = f'{top_results_dir}/frame_{int(current_frame):06d}/sample_{traj:03d}.txt'
+            mkdir_if_missing(current_file)
+            num_pedestrians = sample_motions[frame][traj].shape[0]
+
+            with open(current_file, 'w+') as f:
+                # Pedestrian IDs are 1-indexed in AgentFormer
+                for p_id in range(1, num_pedestrians + 1):
+                    for future_frame in range(NUM_FUTURE_FRAMES):
+                        current_ped_x = sample_motions[frame][traj][p_id - 1][future_frame][0]
+                        current_ped_y = sample_motions[frame][traj][p_id - 1][future_frame][1]
+                        line = f"{float(current_frame + future_frame + 1)} {float(p_id)} {float(current_ped_x)} {float(current_ped_y)}\n"
+                        f.write(line)
 
 if __name__ == '__main__':
 
@@ -137,7 +169,8 @@ if __name__ == '__main__':
             save_dir = f'{cfg.result_dir}/epoch_{epoch:04d}/{split}'; mkdir_if_missing(save_dir)
             eval_dir = f'{save_dir}/samples'
             if not args.cached:
-                test_model(generator, save_dir, cfg, model, device, log)
+                sample_motions = test_model(generator, save_dir, cfg, model, device, log)
+                save_best_trajectories(sample_motions, cfg)
 
             log_file = os.path.join(cfg.log_dir, 'log_eval.txt')
             cmd = f"python eval.py --dataset {cfg.dataset} --results_dir {eval_dir} --data {split} --log {log_file}"
@@ -146,5 +179,3 @@ if __name__ == '__main__':
             # remove eval folder to save disk space
             if args.cleanup:
                 shutil.rmtree(save_dir)
-
-

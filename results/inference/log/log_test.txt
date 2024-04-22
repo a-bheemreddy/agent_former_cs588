@@ -1,4 +1,3 @@
-loading model from checkpoint: results/inference/models/model_0005.p
 
 -------------------------- loading test data --------------------------
 loading sequence inference_data ...
