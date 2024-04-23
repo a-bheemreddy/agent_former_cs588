@@ -25,8 +25,7 @@ def get_model_prediction(data, sample_k, model):
     sample_motion_3D = sample_motion_3D.transpose(0, 1).contiguous()
     return sample_motion_3D
 
-def run_model(model, cfg, file_path):
-    gt_data = np.genfromtxt(file_path, delimiter=' ', dtype=str)
+def run_model(model, cfg, gt_data):
     best_samples = [0,1,17,18,19]
     # Perform model1 operations using the input data
     epoch = 30
@@ -67,7 +66,7 @@ def run_model_on_data(generator, save_dir, cfg, model, device, log):
 
 if __name__ == "__main__":
     cfg = Config('inference')
-    device = 'cuda'
+    device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
 
     model = model_dict['dlow'](cfg)
     model.set_device(device)
@@ -87,7 +86,8 @@ if __name__ == "__main__":
     # Log some messages
 
     file_path = 'datasets/eth_ucy/inference_data/inference_data.txt'
-    run_model(model, cfg, file_path)
+    gt_data = np.genfromtxt(file_path, delimiter=' ', dtype=str)
+    run_model(model, cfg, gt_data)
 
     # while True:
     #     # for line in sys.stdin:
