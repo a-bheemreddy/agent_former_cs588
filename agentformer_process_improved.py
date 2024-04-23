@@ -34,7 +34,7 @@ def run_model(model, cfg, file_path):
     log = open(os.path.join(cfg.log_dir, 'log_test.txt'), 'w')
     generator = data_generator(cfg, gt_data, log, split=split, phase='testing')
     save_dir = f'{cfg.result_dir}/epoch_{epoch:04d}/{split}'; mkdir_if_missing(save_dir)
-    sample_motion_3D = run_model_on_data(generator, save_dir, cfg, model, device, log) # [samples, num_agents, future_frames, 2]
+    sample_motion_3D, valid_id= run_model_on_data(generator, save_dir, cfg, model, device, log) # [samples, num_agents, future_frames, 2]
     sample_motion_3D = sample_motion_3D[best_samples]
     # write to file or return  
     # select the
@@ -42,6 +42,9 @@ def run_model(model, cfg, file_path):
     sys.stdout.flush()
     # print "READY"
     print("RAN MODEL !!!!!", flush=True)
+    print(f"ids are {valid_id}", flush=True)
+
+    
     print(sample_motion_3D.shape)
 
 def run_model_on_data(generator, save_dir, cfg, model, device, log):
@@ -58,7 +61,7 @@ def run_model_on_data(generator, save_dir, cfg, model, device, log):
             sample_motion_3D = get_model_prediction(data, cfg.sample_k, model)
         sample_motion_3D = sample_motion_3D * cfg.traj_scale
     
-        return sample_motion_3D
+        return sample_motion_3D, data['valid_id']
         
 
 if __name__ == "__main__":

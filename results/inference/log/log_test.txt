@@ -1,9 +1,3 @@
-
--------------------------- loading test data --------------------------
-loading sequence inference_data ...
 total num samples: 22
 ------------------------------ done --------------------------------
 
-
-
- total_num_pred: 44

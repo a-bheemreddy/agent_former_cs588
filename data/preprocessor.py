@@ -33,6 +33,7 @@ class preprocess(object):
         else:
             assert False, 'error'
 
+        # replace this literally passed in numpy array
         self.gt = np.genfromtxt(label_path, delimiter=delimiter, dtype=str)
         frames = self.gt[:, 0].astype(np.float32).astype(np.int64)
         fr_start, fr_end = frames.min(), frames.max()
