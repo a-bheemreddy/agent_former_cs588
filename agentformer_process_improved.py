@@ -42,7 +42,7 @@ def run_model(model, cfg, gt_data):
     # print "READY"
     print("RAN MODEL !!!!!", flush=True)
     print(f"ids are {valid_id}", flush=True)
-
+    print(sample_motion_3D)
     
     print(sample_motion_3D.shape)
     return sample_motion_3D, frame
