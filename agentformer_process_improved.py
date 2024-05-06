@@ -42,9 +42,14 @@ def run_model(model, cfg, gt_data):
     # print "READY"
     print("RAN MODEL !!!!!", flush=True)
     print(f"ids are {valid_id}", flush=True)
-    print(sample_motion_3D)
-    
     print(sample_motion_3D.shape)
+    # # save sample_motion_3D array to file
+    # torch.save(sample_motion_3D, 'real_results.pt')
+    # load in gt_results from real_results.pt
+    gt_results = torch.load('real_results.pt')
+    # check if the two tensors are equal
+    print("the results match the expected results", torch.equal(sample_motion_3D, gt_results))
+    
     return sample_motion_3D, frame
 
 def run_model_on_data(generator, save_dir, cfg, model, device, log):
@@ -65,16 +70,17 @@ def run_model_on_data(generator, save_dir, cfg, model, device, log):
         
 
 if __name__ == "__main__":
-    cfg = Config('inference')
+    config_file = 'cfg/eth_ucy/inference_data/inference.yml'
+    cfg = Config(config_file)
     device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
 
     model = model_dict['dlow'](cfg)
     model.set_device(device)
     model.eval()
 
-    cp_path = cfg.model_path % 5
+    cp_path = cfg.model_path
     print(f'loading model from checkpoint: {cp_path}')
-    model_cp = torch.load(cp_path, map_location='cpu')
+    model_cp = torch.load(cp_path, map_location=device)
     model.load_state_dict(model_cp['model_dict'], strict=False)
     # print("we here")
     # create logger for file logging.txt
@@ -84,10 +90,16 @@ if __name__ == "__main__":
     fh.setLevel(logging.DEBUG)
     logger.addHandler(fh)
     # Log some messages
-
-    file_path = 'datasets/eth_ucy/inference_data/inference_data.txt'
-    gt_data = np.genfromtxt(file_path, delimiter=' ', dtype=str)
-    run_model(model, cfg, gt_data)
+    import time
+    # get input from user
+    while (True):
+        _ = input("press enter to run model:")
+        org_time = time.time()
+        file_path = 'datasets/eth_ucy/inference_data/inference_data.txt'
+        gt_data = np.genfromtxt(file_path, delimiter=' ', dtype=str)
+        run_model(model, cfg, gt_data)
+        print(f"Time taken: {time.time() - org_time}")
+    
 
     # while True:
     #     # for line in sys.stdin:
